@@ -29,5 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-byebug", "~> 3.4"
   spec.add_development_dependency 'webmock', '~> 2.1'
   spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_dependency "typhoeus", "~> 1.1.2"
 end

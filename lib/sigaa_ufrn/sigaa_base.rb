@@ -30,7 +30,7 @@ class SigaaBase
     Typhoeus::Request.new(
       service_url(endpoint_uri),
       method: http_method,
-      params: params
+      params: params,
       headers: {
         Authorization: "#{token_type} #{auth_token}",
         Accept: 'application/json'

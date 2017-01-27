@@ -2,8 +2,8 @@ require 'typhoeus'
 require 'json'
 
 class SigaaBase
-  SANDBOX_AUTH_URL = 'http://apitestes.info.ufrn.br'
-  AUTH_URL = 'http://api.ufrn.br'
+  SANDBOX_AUTH_URL = 'https://apitestes.info.ufrn.br'
+  AUTH_URL = 'https://api.ufrn.br'
 
   attr_reader :auth_token, :token_type, :response, :body, :status
 
@@ -22,7 +22,7 @@ class SigaaBase
   private
 
   def service_url(endpoint_uri)
-    "#{AUTH_URL}/#{self.class::SERVICE_NAME}-services/services/#{endpoint_uri}"
+    "#{SANDBOX_AUTH_URL}/#{self.class::SERVICE_NAME}-services/services/#{endpoint_uri}"
   end
 
   def query_to_url(query)

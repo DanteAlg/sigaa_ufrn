@@ -1,10 +1,11 @@
 require 'typhoeus'
+require 'json'
 
 class SigaaBase
   SANDBOX_AUTH_URL = 'http://apitestes.info.ufrn.br'
   AUTH_URL = 'http://api.ufrn.br'
 
-  attr_reader :auth_token, :token_type
+  attr_reader :auth_token, :token_type, :response, :body, :status
 
   def initialize(auth_token, token_type)
     @auth_token = auth_token
@@ -12,7 +13,10 @@ class SigaaBase
   end
 
   def run(http_method, endpoint_uri, params = {})
-    request(http_method, endpoint_uri, params).run
+    @response = request(http_method, endpoint_uri, params).run
+    @status = @response.code
+    @body = JSON.parse(@response.body)
+    self
   end
 
   private

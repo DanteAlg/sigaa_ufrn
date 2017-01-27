@@ -12,7 +12,7 @@ class SigaaBase
   end
 
   def run(http_method, endpoint_uri, params = {})
-    request(http_method, endpoint_uri, params)
+    request(http_method, endpoint_uri, params).run
   end
 
   private

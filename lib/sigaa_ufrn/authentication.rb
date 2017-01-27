@@ -15,11 +15,13 @@ module SigaaUfrn
 
       # Authenticação para acessar dados privados dos sistemas da SINFO, deve ser usado no endpoint após o Oauth no site da api
       # Acessa turmas de um usuário, frequências de um discente, histórico de utilização de um usuário no restaurante universitário
+      # TODO: specs
       def authorization_code(client_id, client_secret, redirect_uri, code)
         new.request('authorization_code', client_id: client_id, client_secret: client_secret, redirect_uri: redirect_uri, code: code)
       end
 
       # Atualização do token de acesso privado do authorization_code
+      # TODO: specs
       def refresh_token(client_id, client_secret, refresh_token)
         new.request('refresh_token', client_id: client_id, client_secret: client_secret, refresh_token: refresh_token)
       end

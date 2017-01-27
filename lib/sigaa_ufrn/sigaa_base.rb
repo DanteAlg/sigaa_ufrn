@@ -22,11 +22,7 @@ class SigaaBase
   private
 
   def service_url(endpoint_uri)
-    "#{AUTH_URL}/#{service_type}/services/#{endpoint_uri}"
-  end
-
-  def service_type
-    'example-service'
+    "#{AUTH_URL}/#{self.class::SERVICE_NAME}-services/services/#{endpoint_uri}"
   end
 
   def query_to_url(query)

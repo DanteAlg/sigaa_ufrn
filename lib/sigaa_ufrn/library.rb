@@ -1,5 +1,6 @@
 module SigaaUfrn
   class Library < SigaaBase
+    SERVICE_NAME = 'biblioteca'
     ARTICLES_QUERY = { autor: nil, titulo: nil, palavras_chave: nil }
     ARTICLE_DETAIL_QUERY = { autor: nil, titulo: nil, palavras_chave: nil, id_artigo: nil }
     BOOKS_QUERY = { titulo: nil, assunto: nil, autor: nil, dados_titulo: nil }
@@ -37,12 +38,6 @@ module SigaaUfrn
 
     def find_by_material_in_library(material_id, library_id)
       run(:get, "consulta/biblioteca/tipomaterial/#{material_id}/#{library_id}")
-    end
-
-    private
-
-    def service_type
-      'biblioteca-service'
     end
   end
 end

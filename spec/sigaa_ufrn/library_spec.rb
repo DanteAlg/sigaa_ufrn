@@ -1,13 +1,12 @@
 require "spec_helper"
 
-RSpec.describe SigaaUfrn::Library do
+RSpec.describe SigaaUfrn::Library, vcr: true do
   let(:library) { described_class.new('985c690a-9879-4868-bc58-706d5b353152', 'bearer') }
 
   describe '#materials' do
     subject { library.materials }
 
     it 'return library materials' do
-      binding.pry
     end
   end
 

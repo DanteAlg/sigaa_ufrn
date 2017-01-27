@@ -1,6 +1,9 @@
 require 'typhoeus'
 
 class SigaaBase
+  SANDBOX_AUTH_URL = 'http://apitestes.info.ufrn.br'
+  AUTH_URL = 'http://api.ufrn.br'
+
   attr_reader :auth_token, :token_type
 
   def initialize(auth_token, token_type)
@@ -15,7 +18,7 @@ class SigaaBase
   private
 
   def service_url(endpoint_uri)
-    "https://api.ufrn.br/#{service_type}/services/#{endpoint_uri}"
+    "#{AUTH_URL}/#{service_type}/services/#{endpoint_uri}"
   end
 
   def service_type

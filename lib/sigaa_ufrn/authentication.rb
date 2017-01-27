@@ -3,7 +3,9 @@ require 'json'
 
 module SigaaUfrn
   class Authentication
-    AUTH_URL = 'http://apitestes.info.ufrn.br/authz-server/oauth/token'
+    SANDBOX_AUTH_URL = 'http://apitestes.info.ufrn.br/authz-server/oauth/token'
+    AUTH_URL = 'http://api.ufrn.br/authz-server/oauth/token'
+
     attr_accessor :response, :body, :status
 
     class << self
@@ -40,7 +42,7 @@ module SigaaUfrn
     private
 
     def auth_request(grant_type, params = {})
-      Typhoeus::Request.new(AUTH_URL, method: :post, params: params.merge!(grant_type: grant_type))
+      Typhoeus::Request.new(SANDBOX_AUTH_URL, method: :post, params: params.merge!(grant_type: grant_type))
     end
   end
 end

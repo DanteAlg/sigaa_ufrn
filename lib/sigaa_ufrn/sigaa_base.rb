@@ -1,3 +1,5 @@
+require 'typhoeus'
+
 class SigaaBase
   attr_reader :auth_token, :token_type
 

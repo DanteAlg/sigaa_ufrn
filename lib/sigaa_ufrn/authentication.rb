@@ -1,6 +1,10 @@
+require 'typhoeus'
+require 'json'
+
 module SigaaUfrn
   class Authentication
     AUTH_URL = 'http://apitestes.info.ufrn.br/authz-server/oauth/token'
+    attr_accessor :response, :body, :status
 
     class << self
       # Authenticação para acessar dados públicos dos sistemas da SINFO
@@ -25,13 +29,16 @@ module SigaaUfrn
     # Enviar no header das requests: Authorization "response['token_type'] response['access_token']"
 
     def request(grant_type, params)
-      auth_request('refresh_token', params)
+      @response = auth_request(grant_type, params).run
+      @status = @response.response_code
+      @body = JSON.parse(@response.body)
+      self
     end
 
     private
 
     def auth_request(grant_type, params = {})
-      Typhoeus::Request.new(AUTH_URL, method: :post, params: params)
+      Typhoeus::Request.new(AUTH_URL, method: :post, params: params.merge!(grant_type: grant_type))
     end
   end
 end

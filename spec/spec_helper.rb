@@ -1,5 +1,9 @@
-require "bundler/setup"
-require "sigaa_ufrn"
+require 'bundler/setup'
+require 'json'
+require 'sigaa_ufrn'
+Bundler.require(:development)
+
+require 'support/vcr'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
